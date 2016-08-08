@@ -44,7 +44,7 @@ if __name__ == '__main__':
 			self.font = pygame.font.Font('freesansbold.ttf', 12)
 
 			self.temp = -100
-			self.change = 1
+			self.change = 0.5
 
 			pygame.display.set_caption(self.title)
 
@@ -53,7 +53,7 @@ if __name__ == '__main__':
 			pass
 
 		def draw(self):
-			self.screen.fill(water(self.temp))
+			self.screen.fill(temperature(self.temp))
 
 			text = self.font.render("%i degrees" % (self.temp), True, (0, 0, 0))
 			self.screen.blit(text, (10, 10))

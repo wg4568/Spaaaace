@@ -26,8 +26,8 @@ class Planet:
 			seed=helpers.random_seed(),
 			image_size=1000,
 			sharp=100,
-			land_color=None,
-			ocean_color=None,
+			land_color=colors.random_color(),
+			ocean_color=colors.random_color(),
 			water=50,
 			blur=10,
 			size=100,
@@ -42,10 +42,13 @@ class Planet:
 		self.planet_type = planet_type
 		self.temp = temp
 
-		self.sharp_img = Image.new('RGB', (1000, 1000)).convert("RGBA")
-		self.blur_filter = ImageFilter.GaussianBlur(radius=self.blur)
+		self.land_color = land_color
+		self.ocean_color = ocean_color
+		self.water = water
+		self.sharp = float(sharp)
 
-		self.land_color, self.ocean_color, self.water, self.sharp = generate_values(self.temp, self.planet_type, self.seed)
+		self.sharp_img = Image.new('RGB', [self.image_size]*2).convert("RGBA")
+		self.blur_filter = ImageFilter.GaussianBlur(radius=self.blur)
 
 		"""
 		self.sharp = float(sharp)
