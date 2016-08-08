@@ -1,10 +1,10 @@
 import pygame, planets, helpers, os, loadingbars, random
 
-planet = planets.Planet(temp=0, planet_type="earthlike")
+planet = planets.Planet(temp=100, planet_type="gas")
 planet.image_generate()
 planet.image_save("planet.png")
 
-planet = pygame.transform.scale(pygame.image.load("planet.png"), [100, 100])
+planet = pygame.transform.scale(pygame.image.load("planet.png"), [500, 500])
 
 class Game:
 	def __init__(self):
