@@ -6,7 +6,7 @@ class PercentOutput:
 		self.minval = minval
 		self.maxval = maxval
 		self.position = 0
-		self.width = width
+		self.width = 100
 		self.val = self.minval
 
 	def set(self, val):

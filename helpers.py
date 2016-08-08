@@ -1,7 +1,11 @@
+from random import randint, seed as set_seed
 from noise import pnoise1, pnoise2
-from random import randint
+import math, os, binascii
 from hashlib import md5
-import math
+
+def random_seed(length=16):
+	set_seed(binascii.b2a_hex(os.urandom(length)))
+	return binascii.b2a_hex(os.urandom(length))
 
 def noise1D(val, seed, sharp=100.):
 	seed = parse_seed(seed)
@@ -27,9 +31,3 @@ def parse_seed(seed):
 
 def dist_between(x1, y1, x2, y2):
 	return math.sqrt((x1 - x2) ** 2 + (y1 - y2) ** 2)
-
-def random_color():
-	r=randint(0,255)
-	g=randint(0,255)
-	b=randint(0,255)
-	return r, g, b

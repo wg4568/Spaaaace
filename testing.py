@@ -1,10 +1,10 @@
-import pygame, planets
+import pygame, planets, helpers, os, loadingbars, random
 
-planet = planets.Planet()
-planet.generate_image()
-planet.save("image.png")
+planet = planets.Planet(temp=0, planet_type="earthlike")
+planet.image_generate()
+planet.image_save("planet.png")
 
-planet_img = pygame.transform.scale(pygame.image.load("image.png"), [500, 500])
+planet = pygame.transform.scale(pygame.image.load("planet.png"), [100, 100])
 
 class Game:
 	def __init__(self):
@@ -16,6 +16,7 @@ class Game:
 
 		self.running = False
 		self.frame = 0
+		self.offset = 0
 		self.clock = pygame.time.Clock()
 		self.screen = pygame.display.set_mode(self.size)
 		self.font = pygame.font.Font('freesansbold.ttf', 12)
@@ -23,10 +24,10 @@ class Game:
 		pygame.display.set_caption(self.title)
 
 	def movement(self):
-		pass
+		keys = pygame.key.get_pressed()
 
 	def draw(self):
-		self.screen.blit(planet_img, [0, 0])
+		self.screen.blit(planet, [0, 0])
 
 	def start(self):
 		self.running = True
